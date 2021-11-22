@@ -199,7 +199,7 @@ textarea {
      background-color: rgba(255, 255, 255, .8);
      width: 290px;
      padding: 20px;
-     margin-right: 20px;
+     margin-right: 40px;
 
    }
 
@@ -247,6 +247,26 @@ textarea {
    .slideshow__dot:hover,
    .slideshow__dot--active {
      background: white;
+   }
+
+   .slideshow .slideshow__arrows button{
+     position: absolute;
+     top: 25%;
+     z-index: 1;
+   }
+
+   .arrow__left,
+   .arrow__right {
+    left: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+   }
+
+   .arrow__right {
+
+    left: 95%;
+
    }
 
 /* Gallery */
