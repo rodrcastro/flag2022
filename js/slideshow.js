@@ -18,7 +18,6 @@ function onDotClick(event){
 }
 
 
-
 function nextSlide() {
   // Buscar primeiro qual slide é que está ativo
   //  const currentDot = document.querySelector('.slideshow__dot--active'); - Necessário apenas no método comentado
@@ -47,9 +46,8 @@ function onArrowClick(event) {
   const arrowClicked = event.target;
   const currentSlide = document.querySelector('.slideshow__item--active');
   const next = currentSlide.nextElementSibling || currentSlide.parentElement.firstElementChild;
+  const previous = currentSlide.previousElementSibling || currentSlide.parentElement.lastElementChild;
   const index = Array.from(next.parentElement.children).indexOf(next);
-
-
 
   if (arrowClicked.className === 'arrow__right') {
     currentSlide.classList.remove('slideshow__item--active');
@@ -57,12 +55,13 @@ function onArrowClick(event) {
 
     document.querySelector('.slideshow__dot--active').classList.remove('slideshow__dot--active');
     document.querySelector(`.slideshow__dot:nth-child(${index + 1})`).classList.add('slideshow__dot--active');
+    console.log(index);
   } else {
     currentSlide.classList.remove('slideshow__item--active');
-    document.querySelector('.slideshow__item').classList.add('slideshow__item--active');
+    previous.classList.add('slideshow__item--active');
     document.querySelector('.slideshow__dot--active').classList.remove('slideshow__dot--active');
     document.querySelector(`.slideshow__dot:nth-child(${index - 1})`).classList.add('slideshow__dot--active');
-
+    console.log(index);
 
   }
     // dotClicked.classList.add('.slideshow__dot')
@@ -87,6 +86,6 @@ function onArrowClick(event) {
   //   currentDot.parentElement.firstElementChild.classList.add('slideshow__dot--active');
   // }
 //setTimeout(nextSlide, 5000);
-setInterval(nextSlide, 5000);
+// setInterval(nextSlide, 5000);
 
 
