@@ -48,6 +48,7 @@ function onArrowClick(event) {
   const next = currentSlide.nextElementSibling || currentSlide.parentElement.firstElementChild;
   const previous = currentSlide.previousElementSibling || currentSlide.parentElement.lastElementChild;
   const index = Array.from(next.parentElement.children).indexOf(next);
+  const previousIndex = Array.from(previous.parentElement.children).indexOf(previous);
 
   if (arrowClicked.className === 'arrow__right') {
     currentSlide.classList.remove('slideshow__item--active');
@@ -55,14 +56,11 @@ function onArrowClick(event) {
 
     document.querySelector('.slideshow__dot--active').classList.remove('slideshow__dot--active');
     document.querySelector(`.slideshow__dot:nth-child(${index + 1})`).classList.add('slideshow__dot--active');
-    console.log(index);
   } else {
     currentSlide.classList.remove('slideshow__item--active');
     previous.classList.add('slideshow__item--active');
     document.querySelector('.slideshow__dot--active').classList.remove('slideshow__dot--active');
-    document.querySelector(`.slideshow__dot:nth-child(${index - 1})`).classList.add('slideshow__dot--active');
-    console.log(index);
-
+    document.querySelector(`.slideshow__dot:nth-child(${previousIndex + 1})`).classList.add('slideshow__dot--active');
   }
     // dotClicked.classList.add('.slideshow__dot')
     // document.querySelector('.slideshow__item--active').classList.remove('slideshow__item--active');
