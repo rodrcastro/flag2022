@@ -1,14 +1,20 @@
+import { tns } from "../node_modules/tiny-slider/src/tiny-slider"
 import './accordion';
 import './tabs';
 import './cookies';
 import './gallery';
 import './slideshow';
 
+// Tiny Slider
+const slider = tns({
+  container: '.tiny-slider',
+  items: 1,
+  slideBy: 'page',
+  autoplay: true
+});
+
 // Filters
-
-
-// Gallery / Slideshow
-
+// Forms Validations
 
 
 // Back to top // Scroll à la Zomato
@@ -40,10 +46,7 @@ function onScroll(event) {
 }
 
 
-// Exports / Imports - Refactor
-
-
 
 // Countdown
 // Animations on Scroll
-// Forms Validations
+// Plugins integration
