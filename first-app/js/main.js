@@ -17,7 +17,7 @@ const slider = tns({
 // Forms Validations
 
 
-// Back to top // Scroll à la Zomato
+// Back to top / Scroll à la Zomato
 window.addEventListener('scroll', onScroll);
 
 function onScroll(event) {
