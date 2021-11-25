@@ -34,15 +34,38 @@
       </svg>
     </div>
     <div class="header__column">
-      <button class="header__notifications">
-        <span class="material-icons">notifications</span>
-        <span class="header__new-notifications">1</span>
-      </button>
+      <!-- Criar div para caber o section das notifications para que o estilo acompanhe esta div -->
+      <div class="header__notifications">
+        <button class="header__notifications">
+          <span class="material-icons">notifications</span>
+          <span class="header__new-notifications">1</span>
+        </button>
+        <section class="notifications notifications--active">
+          <header class="notifications__header">
+            <h2 class="notifications__title">Notifications</h2>
+            <button class="notifications__clear">Clear all</button>
+          </header>
+          <div class="notifications__container">
+            <article class="notification">
+              <header class="notification__header">
+                <h3 class="notification__title">Isto é uma notificação</h3>
+                <button class="notification__close">
+                  <span class="material-icons">close</span>
+                </button>
+              </header>
+              <div class="notification__content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis neque fugiat, exercitationem ullam assumenda quibusdam.</p>
+                <p><a href="#nowhere">Receive updates</a></p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
       <button class="header__account">
         <span>RG</span>
       </button>
     </div>
-    <section class="notifications">
+    <!-- <section class="notifications">
       <header class="notifications__header">
         <h2 class="notifications__title">Notifications</h2>
         <button class="notifications__clear">Clear all</button>
@@ -61,7 +84,7 @@
           </div>
         </article>
       </div>
-    </section>
+    </section> -->
   </header>
 
   <script src="js/main.js"></script>
