@@ -256,12 +256,26 @@ textarea {
      z-index: 2;
    }
 
+   .material-icons.md-48 { 
+     font-size: 48px;
+    }   
+
+   .material-icons.md-light {
+     color: rgba(255, 255, 255, 1);
+  }
+
    .arrow__left,
    .arrow__right {
+     background: transparent;
+    border: 0;
     left: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
     cursor: pointer;
+   }
+
+   .arrow__left:hover,
+   .arrow__right:hover {
+    background: rgba(255, 255, 255, .2);
+    transition: 300ms ease-in-out;
    }
 
    .arrow__right {
