@@ -3,6 +3,7 @@
   position: relative;
   justify-content: space-between;
   padding: 1rem;
+  background: var(--color-white)
 }
 
 .header__column {
@@ -20,8 +21,8 @@
 }
 
 .header__notifications {
-  font-size: 1.5rem;
   position: relative;
+  font-size: 1.5rem;
   padding-top: 5px;
 }
 
@@ -31,8 +32,8 @@
   right: 0;
   width: 20px;
   height: 20px;
-  background: orange;
-  color: white;
+  background: var(--color-highlight);
+  color: var(--color-white);
   font-size: 0.75rem;
   border-radius: 50%;
   display: flex;
@@ -45,8 +46,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: blue;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,34 +1,50 @@
 .notification {
-  padding: 0.50rem 1.25rem;
+  padding: 15px 1.25rem;
+  transition: 300ms;
   
   &:hover {
-    background: rgb(204, 204, 204);
+    background: var(--color-surface);
   }
 }
 
 .notification__header{
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  align-items: center;
+  //width: 100%;
   font-size: 14px;
   margin: 0 0 1rem 0;
 
-  & .notification__title {
+  .notification__title {
     margin: 0;
-    
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  .notification__close {
+    color: var(--color-secondary);
+    font-size: 1.25rem;
   }
 }
 
-.notification__close {
-  
-}
-
-
 .notification__content {
-  font-size: 12px;
+  font-size: 0.75rem;
 
-  & > p {
+  p:last-child{
+    margin-bottom: 0;
+  }
+
+  p {
     margin: 0 0 1rem 0;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
 }

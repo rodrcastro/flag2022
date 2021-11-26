@@ -2,46 +2,60 @@
 // Top 100% porque ele fica abaixo do header
 
 .notifications {
-  display: none;
-}
-
-.notifications--active {
+  //display: none;
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 100%;
   right: 0%;
-  padding: 0.5rem 0;
   width: 360px;
-  box-shadow: 0px 0px 5px 0px #000000;
+  padding: 0.5rem 0;
+  background: var(--color-white);
+  box-shadow: var(--box-shadow);
 }
+
+// .notifications--active {
+//   display: flex;
+//   flex-direction: column;
+//   position: absolute;
+//   top: 100%;
+//   right: 0%;
+//   width: 360px;
+//   padding: 0.5rem 0;
+//   background: var(--color-white);
+//   box-shadow: var(--box-shadow);
+// }
 
 .notifications__header {
   display: flex;
   justify-content: space-between;
-  //align-items: flex-end;
-  width: 100%;
-  padding: 0.75rem 1.25rem;  
-  
+  align-items: center;
+  //width: 100%;
+  padding: 13px 20px 13px; // Feito pelo Nuno 
+  //padding: 0.75rem 1.25rem; - Feito por mim
 }
 
 .notifications__title {
   margin: 0;
-  font-size: 1rem;
-  color: grey;
-  
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
 }
 
 .notifications__clear {
-  margin: 0 2.5rem 0 0;
-  
+  color: var(--color-primary);
+  font-size: 0.75rem;
 
-
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .notifications__container {
 //  padding: 0rem 0.15rem 0.57rem;
-  width: 100%;
+//  width: 100%;
 }
 
 
