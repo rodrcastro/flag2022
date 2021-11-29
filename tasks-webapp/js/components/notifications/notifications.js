@@ -1,39 +1,50 @@
 // TODO: Adicionar novas "datas" e colocar elas "hidden" debaixo do header
-// TODO: 
 // TODO: Adicionar localStorage e a info de read quando fechada uma notification
 
 import './notifications.scss';
 import '../notification/notification'
 
 // Simular guardar vários valores iguais, criamos um array de objetos
-const data = [
+const staticData = [
   {
-    title: 'Email updates',
+    id: 1,
+    title: 'Email updates 1',
     subtitle: 'Do you want to receive product updates once a month via our newsletter?',
     link: '#nowhere',
     cta: 'Receive updates',
-    read: false
+    isRead: false
   },
   {
-    title: 'Email updates',
+    id: 2,
+    title: 'Email updates 2',
     subtitle: 'Do you want to receive product updates once a month via our newsletter?',
     link: '#nowhere',
     cta: 'Receive updates',
-    read: false
+    isRead: false
   },
   {
-    title: 'Email updates',
+    id: 3,
+    title: 'Email updates 3',
     subtitle: 'Do you want to receive product updates once a month via our newsletter?',
     link: '#nowhere',
     cta: 'Receive updates',
-    read: false
+    isRead: false
   },
   {
-    title: 'Email updates',
+    id: 4,
+    title: 'Email updates 4',
     subtitle: 'Do you want to receive product updates once a month via our newsletter?',
     link: '#nowhere',
     cta: 'Receive updates',
-    read: false
+    isRead: false
+  },
+  {
+    id: 5,
+    title: 'Email updates 5',
+    subtitle: 'Do you want to receive product updates once a month via our newsletter?',
+    link: '#nowhere',
+    cta: 'Receive updates',
+    isRead: false
   },
 ];
 
@@ -45,6 +56,7 @@ const data = [
 function createNotification(info) {
   const notification = document.createElement('article');
   notification.classList.add('notification');
+  notification.setAttribute('data-id', info.id);
 
   const header = document.createElement('header');
   header.classList.add('notification__header');  
@@ -72,16 +84,58 @@ function createNotification(info) {
 }
 
 function onNotificationClose(event) {
-  const notification = event.target.closest('.notification');
-  notification.remove();
-  
-  localStorage.setItem('read', true);
+  const element = event.target.closest('.notification');
+  const item = data.find(el => el.id == element.getAttribute('data-id'));
+  if(item) {
+    item.isRead = true;
+    element.remove();
+    updateNotificationsStorage();
+  }
+
 }
+
+function updateNotificationsStorage() {
+  localStorage.setItem('notifications', JSON.stringify(data));
+  updateNotificationsCount()
+}
+
+function clearNotifications() {
+  for (let notification of data) {
+    notification.isRead = true;
+    document.querySelector('.notifications__container').innerHTML = '';
+  }
+  updateNotificationsStorage();
+  updateNotificationsCount()
+}
+
+function toggleNotifications() {
+  document.querySelector('.notifications').classList.toggle('notifications--show');
+}
+
+// Update notifications badge number
+function updateNotificationsCount() {
+  const count = document.querySelector('.notifications__container').children.length;
+  const element = document.querySelector('.header__new-notifications');
+  element.textContent = count;
+  element.style.display = (count > 0) ? 'flex' : 'none';
+  // (condição) ? se for true, faça o que está aqui aqui : else faça isso aqui;
+}
+
+const data = JSON.parse(localStorage.getItem('notifications')) || staticData;
 
 for (let notification of data) {
-  createNotification(notification);
+  if(!notification.isRead) {
+    createNotification(notification);
+  }
 }
 
+updateNotificationsCount();
+
+// Clear All notifications event
+document.querySelector('.notifications__clear').addEventListener('click', clearNotifications)
+
+// Toggle notifications container hide/show 
+document.querySelector('.header__notify').addEventListener('click', toggleNotifications);
 /*
 <article class="notification">
   <header class="notification__header">

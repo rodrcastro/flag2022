@@ -1,9 +1,14 @@
 .header {
   display: flex;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
   justify-content: space-between;
   padding: 1rem;
-  background: var(--color-white)
+  background: var(--color-white);
+  z-index: 1;
+  box-shadow: var(--box-shadow);
 }
 
 .header__column {
@@ -21,6 +26,12 @@
 }
 
 .header__notifications {
+  position: relative;
+  //   font-size: 1.5rem;
+  //   padding-top: 5px;
+}
+
+.header__notify {
   position: relative;
   font-size: 1.5rem;
   padding-top: 5px;
@@ -53,5 +64,4 @@
   align-items: center;
   margin-left: 1em;
   cursor: pointer;
-
 }

@@ -2,7 +2,6 @@
 // Top 100% porque ele fica abaixo do header
 
 .notifications {
-  //display: none;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -12,6 +11,16 @@
   padding: 0.5rem 0;
   background: var(--color-white);
   box-shadow: var(--box-shadow);
+  opacity: 0;
+  transform: translateY(100px);
+  pointer-events: none;
+  transition: 300ms;
+
+  &--show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }
 
 // .notifications--active {

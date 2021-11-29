@@ -14,17 +14,17 @@
   //width: 100%;
   font-size: 14px;
   margin: 0 0 1rem 0;
+}
 
-  .notification__title {
-    margin: 0;
-    font-size: 1.125rem;
-    font-weight: 500;
-  }
+.notification__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
 
-  .notification__close {
-    color: var(--color-secondary);
-    font-size: 1.25rem;
-  }
+.notification__close {
+  color: var(--color-secondary);
+  font-size: 1.25rem;
 }
 
 .notification__content {
