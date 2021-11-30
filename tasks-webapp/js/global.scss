@@ -29,6 +29,7 @@ body {
   overflow-y: scroll;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
   color: var(--color-default);
   background: var(--color-surface-light);
 }
@@ -40,10 +41,29 @@ button {
   cursor: pointer;
 }
 
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  min-width: 100px;
+  border-radius: 2px;
+
+  &[disabled] {
+    opacity: 0.65;
+    cursor: default;
+  }
+}
+
 .main {
   display: grid;
   grid-template-columns: 240px 1fr;
   min-height: 100vh;
+}
+
+.content {
+  padding: 100px 20px;
 }
 
 .material-icons {

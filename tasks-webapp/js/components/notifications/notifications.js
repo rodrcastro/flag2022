@@ -1,5 +1,5 @@
-// TODO: Adicionar novas "datas" e colocar elas "hidden" debaixo do header
-// TODO: Adicionar localStorage e a info de read quando fechada uma notification
+// TODO: Adicionar wrap no número de notificações (se for mais do que 3, criar scroll
+// TODO: Adicionar opção de clicar fora do ícone e fechar as notificações na mesma
 
 import './notifications.scss';
 import '../notification/notification'
