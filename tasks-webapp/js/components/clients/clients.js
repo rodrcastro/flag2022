@@ -13,16 +13,16 @@ Passos a seguir:
 
 - Devo saber qual é o item que estou clicando (sempre lembrar de tirar um item do array que vou buscar pq tem o "p" do Name)
 
-**DELETE**
-- Deve apagar o element
-- Apagar o elemento do array
-- Guardar no storage do array
+// *DELETE
+//- Deve apagar o element
+//- Apagar o elemento do array
+//- Guardar no storage do array
 
-**EDIT**
-- Remove o atributo do input
-- Ao sair do input (blur, quando perde o foco) atualizar o valor no array
+* *EDIT
+//- Remove o atributo do input
+//- Ao sair do input (blur, quando perde o foco) atualizar o valor no array
 - Atualizar o storage
-- Botar o readonly
+//- Botar o readonly de novo
 */
 
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
@@ -32,6 +32,9 @@ const addClient = document.querySelector('.clients__add')
 const createForm = document.querySelector('.clients__create');
 // Cria primeiro os clients vazio se não tiver nada no local storage
 const clients = JSON.parse(localStorage.getItem('clients')) || [];
+
+// Input para deletar/editar um item
+
 let countId = 0;
 
 
@@ -86,14 +89,56 @@ function onKeyUp() {
   }
 }
 
-function onDelete() {
-  console.log('delete');
+function onDelete(event) {
+  // Identificar qual o target da ação
+  const element = event.target.closest('.client');
+
+  // Identificar qual o ID do client que eu cliquei
+  const inputTitle = element.querySelector('.client__title');
+  const item = clients.indexOf(inputTitle.value);
+
+  // Apagar elemento do Array
+  clients.splice(item, 1);
+
+  // Update localstorage
+  updateStorage();
+
+  // Remover elemento da página
+  element.remove();
+   
 }
 
-function onEdit() {
-  console.log('edit');
-}
+function onEdit(event) {
+  // Identificar qual o target da ação
+  const element = event.target.closest('.client');
+  
+  // Identificar qual o title do client que eu cliquei
+  const inputTitle = element.querySelector('.client__title');
+  
+  // Remover o atributo readonly para tornar o item editável
+  inputTitle.removeAttribute('readonly');
 
+  // Determino length do nome do cliente
+  let titleLength = inputTitle.value.length
+  // Adiciono foco no input
+  inputTitle.focus();
+  // Coloco o cursor quando em modo focus no final do input
+  inputTitle.setSelectionRange(titleLength, titleLength);
+
+  // Criei index dos clients a partir do valor do nome no input
+  const item = clients.indexOf(inputTitle.value);
+
+  // Identificar quando o campo input fica com blur
+  inputTitle.addEventListener('blur', function () {
+    // Adiciona o item editado ao array existente
+    clients[item] = inputTitle.value;
+    // Atualizo o valor do localStorage a partir do array novo
+    updateStorage();
+    // Adiciono novamente o atributo readonly
+    inputTitle.setAttribute('readonly', '')
+  })
+
+}
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
 inputClient.addEventListener('keyup', onKeyUp);
 
