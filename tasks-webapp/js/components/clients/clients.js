@@ -21,7 +21,7 @@ Passos a seguir:
 * *EDIT
 //- Remove o atributo do input
 //- Ao sair do input (blur, quando perde o foco) atualizar o valor no array
-- Atualizar o storage
+// - Atualizar o storage
 //- Botar o readonly de novo
 */
 
@@ -112,7 +112,7 @@ function onEdit(event) {
   // Identificar qual o target da ação
   const element = event.target.closest('.client');
   
-  // Identificar qual o title do client que eu cliquei
+  // Identificar qual o input/title do client que eu cliquei
   const inputTitle = element.querySelector('.client__title');
   
   // Remover o atributo readonly para tornar o item editável
@@ -125,12 +125,12 @@ function onEdit(event) {
   // Coloco o cursor quando em modo focus no final do input
   inputTitle.setSelectionRange(titleLength, titleLength);
 
-  // Criei index dos clients a partir do valor do nome no input
+  // Crio index dos clients a partir do valor do nome no input
   const item = clients.indexOf(inputTitle.value);
 
-  // Identificar quando o campo input fica com blur
+  // Identifico quando o campo input fica com blur
   inputTitle.addEventListener('blur', function () {
-    // Adiciona o item editado ao array existente
+    // Adiciono o item editado ao array existente
     clients[item] = inputTitle.value;
     // Atualizo o valor do localStorage a partir do array novo
     updateStorage();
