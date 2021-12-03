@@ -4,6 +4,7 @@
   background: var(--color-white);
   display: flex;
   justify-content: space-between;
+  transition: 350ms;
 
   &__title {
     width: 100%;

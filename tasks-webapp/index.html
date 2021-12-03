@@ -20,6 +20,7 @@
 
   <body>
     <!-- Add your site or application content here -->
+    <!-- Header -->
     <header class="header">
       <div class="header__column">
         <button class="header__toggle">
@@ -96,6 +97,7 @@
     </section> -->
     </header>
 
+    <!-- Main content side -->
     <main class="main">
       <div class="sidebar">
         <ul class="sidebar__list">
@@ -168,9 +170,9 @@
             <h2 class="clients__headline">Clients</h2>
             <form class="clients__filters">
               <select name="clients_filter" id="" class="clients__select">
-                <option>Show active</option>
-                <option>Show archived</option>
-                <option>Show all</option>
+                <option value="active">Show active</option>
+                <option value="archived">Show archived</option>
+                <option value="">Show all</option>
               </select>
               <input
                 type="search"
@@ -191,7 +193,7 @@
               </button>
             </form>
           </header>
-          <div class="clients__container">
+          <div class="clients__container" data-status="active">
             <p class="clients__label">Name</p>
             <!-- <div class="client">
               <input
