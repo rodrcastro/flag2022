@@ -1,6 +1,10 @@
 import './clients.scss';
 import '../client/client';
 
+// * Dever de casa
+// TODO: Botão que aparece quando um item está archived pra dar reload e voltar a estar active
+// TODO: Botão tem que sumir depois que ele volta a ser active
+
 /*
 Passos a seguir:
 - Perde o atributo de disabled quando algo estiver digitado no input
@@ -8,28 +12,14 @@ Passos a seguir:
 - Ao clicar em add, criar o HTML do cliente
 */
 
-/*
-- Criar funcionalidade de delete e edit
-
-- Devo saber qual é o item que estou clicando (sempre lembrar de tirar um item do array que vou buscar pq tem o "p" do Name)
-
-// *DELETE
-//- Deve apagar o element
-//- Apagar o elemento do array
-//- Guardar no storage do array
-
-* *EDIT
-//- Remove o atributo do input
-//- Ao sair do input (blur, quando perde o foco) atualizar o valor no array
-// - Atualizar o storage
-//- Botar o readonly de novo
-*/
-
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
 const inputClient = document.querySelector('[name="create_client"]')
 // Evento para adicionar um novo cliente
 const addClient = document.querySelector('.clients__add')
 const createForm = document.querySelector('.clients__create');
+
+const currentStatus = document.querySelector('[name="clients_filter"]')
+
 // Cria primeiro os clients vazio se não tiver nada no local storage
 const clients = JSON.parse(localStorage.getItem('clients')) || [];
 
@@ -38,11 +28,15 @@ const clients = JSON.parse(localStorage.getItem('clients')) || [];
 let countId = 0;
 
 
-function create(name) {
+function create(name, status = 'active') {
   // Temporário, o ID deve ser gerenciado pela base de dados/API
   countId++
   const client = document.createElement('div');
   client.classList.add('client');
+
+  // Aula 03/12, info adicionada no client (id do client criado)
+  client.setAttribute('data-id', countId);
+  client.setAttribute('data-status', status);
   
   const title = document.createElement('input');
   title.classList.add('client__title');
@@ -65,15 +59,29 @@ function create(name) {
 
   document.querySelector('.clients__container').append(client);
 
+  // Aula 03/12, damos retorno do countId
+  return countId;
 }
 
 function onAdd(event) {
   event.preventDefault();
-  create(inputClient.value)
-  clients.push(inputClient.value);
+  const clientId = create(inputClient.value);
+
+  clients.push({
+    id: clientId,
+    name: inputClient.value,
+    isActive: true
+  });
+
   updateStorage();
   inputClient.value = '';
+  
 }
+
+function onStatusChange(event) {
+  document.querySelector('.clients__container').setAttribute('data-status', currentStatus.value);
+} 
+
 
 function updateStorage() {
   localStorage.setItem('clients', JSON.stringify(clients));
@@ -90,6 +98,29 @@ function onKeyUp() {
 }
 
 function onDelete(event) {
+  /* Solução feita em sala
+  Adicionamos um ID para cada entrada do Array, então essencialmente muda que vou buscar o ID ao invés do nome do cliente
+  */
+
+  // Identificar qual o target da ação
+  const element = event.target.closest('.client');
+  element.setAttribute('data-status', 'archived');
+
+  // Buscar o index do item que cliquei para apagar no array
+  //const index = clients.findIndex(item => item.id == element.getAttribute('data-id'));
+
+  // Apagar elemento do Array
+  //clients.splice(index, 1);
+
+  // Busquei o item e troquei a informação do isActive para false
+  const item = clients.find(item => item.id == element.getAttribute('data-id'));
+  item.isActive = false;
+
+  // Update localstorage
+  updateStorage();
+
+/*
+  // Minha solução abaixo
   // Identificar qual o target da ação
   const element = event.target.closest('.client');
 
@@ -105,10 +136,13 @@ function onDelete(event) {
 
   // Remover elemento da página
   element.remove();
-   
+*/
 }
 
 function onEdit(event) {
+
+/*
+  // Minha solução abaixo
   // Identificar qual o target da ação
   const element = event.target.closest('.client');
   
@@ -137,7 +171,7 @@ function onEdit(event) {
     // Adiciono novamente o atributo readonly
     inputTitle.setAttribute('readonly', '')
   })
-
+*/
 }
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
 inputClient.addEventListener('keyup', onKeyUp);
@@ -145,9 +179,12 @@ inputClient.addEventListener('keyup', onKeyUp);
 // Evento para adicionar um novo cliente
 createForm.addEventListener('submit', onAdd);
 
+// Evento para verificar o status do filtro
+currentStatus.addEventListener("change", onStatusChange)
+
 // For loop para criar os clients guardados
 for (const item of clients) {
-   create(item);
+   create(item.name, (item.isActive) ? 'active' : 'archived');
  }
 
 
