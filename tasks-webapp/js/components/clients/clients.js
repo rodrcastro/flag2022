@@ -53,9 +53,14 @@ function create(name, status = 'active') {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('client__delete');
   deleteButton.innerHTML = '<span class="material-icons">delete</span>';
-  deleteButton.addEventListener('click', onDelete);
+  deleteButton.addEventListener('click', onStatusToggle);
 
-  client.append(title, editButton, deleteButton)
+  const restoreButton = document.createElement('button');
+  restoreButton.classList.add('client__restore');
+  restoreButton.innerHTML = '<span class="material-icons">restore</span>';
+  restoreButton.addEventListener('click', onStatusToggle);
+
+  client.append(title, editButton, deleteButton, restoreButton);
 
   document.querySelector('.clients__container').append(client);
 
@@ -97,6 +102,7 @@ function onKeyUp() {
   }
 }
 
+// Replaced function below with toggle function
 function onDelete(event) {
   /* Solução feita em sala
   Adicionamos um ID para cada entrada do Array, então essencialmente muda que vou buscar o ID ao invés do nome do cliente
@@ -173,6 +179,33 @@ function onEdit(event) {
   })
 */
 }
+
+
+/* Replaced function with onStatusToggle function onRestore(event) {
+  const element = event.target.closest('.client');
+  element.setAttribute('data-status', 'active');
+
+  const item = clients.find(item => item.id == element.getAttribute('data-id'));
+  item.isActive = true;
+
+  updateStorage();
+} */
+
+function onStatusToggle(event) {
+  const element = event.target.closest('.client');
+  const item = clients.find(item => item.id == element.getAttribute('data-id'));
+
+  if (element.getAttribute('data-status') == 'active') {
+    element.setAttribute('data-status', 'archived');
+    item.isActive = false;
+  } else {
+    element.setAttribute('data-status', 'active');
+    item.isActive = true;
+  }
+
+  updateStorage();
+}
+
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
 inputClient.addEventListener('keyup', onKeyUp);
 
