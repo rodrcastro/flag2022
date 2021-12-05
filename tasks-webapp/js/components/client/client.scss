@@ -20,7 +20,8 @@
   }
 
   &__edit,
-  &__delete {
+  &__delete,
+  &__restore {
     padding: 15px 10px;
     font-size: 1.25rem;
     color: var(--color-secondary);

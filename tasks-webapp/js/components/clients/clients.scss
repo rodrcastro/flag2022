@@ -47,6 +47,10 @@
       }
       .client[data-status="archived"] {
         text-decoration: line-through;
+
+        .client__restore {
+          display: block;
+        }
       }
     }
     &[data-status="active"] {
@@ -54,6 +58,24 @@
         //opacity: 0.25;
         //text-decoration: line-through;
         display: none;
+      }
+      .client[data-status="active"] {
+        .client__restore {
+          display: none;
+        }
+      }
+    }
+    &[data-status=""] {
+      .client[data-status="archived"] {
+        text-decoration: line-through;
+        .client__restore {
+          display: block;
+        }
+      }
+      .client[data-status="active"] {
+        .client__restore {
+          display: none;
+        }
       }
     }
   }
