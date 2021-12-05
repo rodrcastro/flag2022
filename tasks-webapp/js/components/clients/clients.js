@@ -2,8 +2,8 @@ import './clients.scss';
 import '../client/client';
 
 // * Dever de casa
-// TODO: Botão que aparece quando um item está archived pra dar reload e voltar a estar active
-// TODO: Botão tem que sumir depois que ele volta a ser active
+// * DONE: Botão que aparece quando um item está archived pra dar reload e voltar a estar active
+// * DONE: Botão tem que sumir depois que ele volta a ser active
 
 /*
 Passos a seguir:
@@ -102,49 +102,6 @@ function onKeyUp() {
   }
 }
 
-// Replaced function below with toggle function
-function onDelete(event) {
-  /* Solução feita em sala
-  Adicionamos um ID para cada entrada do Array, então essencialmente muda que vou buscar o ID ao invés do nome do cliente
-  */
-
-  // Identificar qual o target da ação
-  const element = event.target.closest('.client');
-  element.setAttribute('data-status', 'archived');
-
-  // Buscar o index do item que cliquei para apagar no array
-  //const index = clients.findIndex(item => item.id == element.getAttribute('data-id'));
-
-  // Apagar elemento do Array
-  //clients.splice(index, 1);
-
-  // Busquei o item e troquei a informação do isActive para false
-  const item = clients.find(item => item.id == element.getAttribute('data-id'));
-  item.isActive = false;
-
-  // Update localstorage
-  updateStorage();
-
-/*
-  // Minha solução abaixo
-  // Identificar qual o target da ação
-  const element = event.target.closest('.client');
-
-  // Identificar qual o ID do client que eu cliquei
-  const inputTitle = element.querySelector('.client__title');
-  const item = clients.indexOf(inputTitle.value);
-
-  // Apagar elemento do Array
-  clients.splice(item, 1);
-
-  // Update localstorage
-  updateStorage();
-
-  // Remover elemento da página
-  element.remove();
-*/
-}
-
 function onEdit(event) {
 
 /*
@@ -179,17 +136,6 @@ function onEdit(event) {
   })
 */
 }
-
-
-/* Replaced function with onStatusToggle function onRestore(event) {
-  const element = event.target.closest('.client');
-  element.setAttribute('data-status', 'active');
-
-  const item = clients.find(item => item.id == element.getAttribute('data-id'));
-  item.isActive = true;
-
-  updateStorage();
-} */
 
 function onStatusToggle(event) {
   const element = event.target.closest('.client');
@@ -240,7 +186,59 @@ for (const item of clients) {
 
 
 
+/* Function abaixo substituída por onStatusToggle()
+function onDelete(event) {
+   * Solução feita em sala
+   * Adicionamos um ID para cada entrada do Array, então essencialmente muda que vou buscar o ID ao invés do nome do cliente
+  
 
+   Identificar qual o target da ação
+  const element = event.target.closest('.client');
+  element.setAttribute('data-status', 'archived');
+
+   Buscar o index do item que cliquei para apagar no array
+  //const index = clients.findIndex(item => item.id == element.getAttribute('data-id'));
+
+   Apagar elemento do Array
+  // clients.splice(index, 1);
+
+   Busquei o item e troquei a informação do isActive para false
+  const item = clients.find(item => item.id == element.getAttribute('data-id'));
+  item.isActive = false;
+
+   Update localstorage
+  updateStorage();
+
+
+      * Minha solução abaixo
+      Identificar qual o target da ação
+      const element = event.target.closest('.client');
+
+    Identificar qual o ID do client que eu cliquei
+      const inputTitle = element.querySelector('.client__title');
+      const item = clients.indexOf(inputTitle.value);
+
+      Apagar elemento do Array
+      clients.splice(item, 1);
+
+    Update localstorage
+      updateStorage();
+
+    Remover elemento da página
+      element.remove();
+
+}
+*/
+
+/* Replaced function with onStatusToggle function onRestore(event) {
+  const element = event.target.closest('.client');
+  element.setAttribute('data-status', 'active');
+
+  const item = clients.find(item => item.id == element.getAttribute('data-id'));
+  item.isActive = true;
+
+  updateStorage();
+} */
 
 
   // <div class="client">
