@@ -5,15 +5,11 @@ import '../client/client';
 // * DONE: Botão que aparece quando um item está archived pra dar reload e voltar a estar active
 // * DONE: Botão tem que sumir depois que ele volta a ser active
 
-/*
-Passos a seguir:
-- Perde o atributo de disabled quando algo estiver digitado no input
-- Adicionar a um array de clients vazio o client que foi digitado no input
-- Ao clicar em add, criar o HTML do cliente
-*/
-
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
 const inputClient = document.querySelector('[name="create_client"]')
+
+const inputSearch = document.querySelector('[name="clients_search"]');
+
 // Evento para adicionar um novo cliente
 const addClient = document.querySelector('.clients__add')
 const createForm = document.querySelector('.clients__create');
@@ -44,6 +40,7 @@ function create(name, status = 'active') {
   title.setAttribute('readonly', '');
   title.setAttribute('value', name);
   title.setAttribute('name', `client_${countId}`);
+  //title.addEventListener('blur', onInputBlur);
   
   const editButton = document.createElement('button');
   editButton.classList.add('client__edit');
@@ -87,7 +84,6 @@ function onStatusChange(event) {
   document.querySelector('.clients__container').setAttribute('data-status', currentStatus.value);
 } 
 
-
 function updateStorage() {
   localStorage.setItem('clients', JSON.stringify(clients));
 }
@@ -103,8 +99,6 @@ function onKeyUp() {
 }
 
 function onEdit(event) {
-
-/*
   // Minha solução abaixo
   // Identificar qual o target da ação
   const element = event.target.closest('.client');
@@ -122,19 +116,20 @@ function onEdit(event) {
   // Coloco o cursor quando em modo focus no final do input
   inputTitle.setSelectionRange(titleLength, titleLength);
 
+
   // Crio index dos clients a partir do valor do nome no input
-  const item = clients.indexOf(inputTitle.value);
+  //const item = clients.indexOf(inputTitle.value);
+  const item = clients.find(item => item.id == element.getAttribute('data-id'));
 
   // Identifico quando o campo input fica com blur
   inputTitle.addEventListener('blur', function () {
     // Adiciono o item editado ao array existente
-    clients[item] = inputTitle.value;
+    item.name = inputTitle.value;
     // Atualizo o valor do localStorage a partir do array novo
     updateStorage();
     // Adiciono novamente o atributo readonly
     inputTitle.setAttribute('readonly', '')
   })
-*/
 }
 
 function onStatusToggle(event) {
@@ -152,6 +147,22 @@ function onStatusToggle(event) {
   updateStorage();
 }
 
+function onSearch(event) {
+  const term = event.target.value;
+  document.querySelectorAll('.client').forEach(client => {
+    const input = client.querySelector('.client__title');
+    if (input.value.toLowerCase().includes(term.toLowerCase())) {
+      client.removeAttribute('data-search-hide');
+    } else {
+      client.setAttribute('data-search-hide', '');
+    }
+  });
+}
+
+// Evento de keyup no search filter
+inputSearch.addEventListener('keyup', onSearch);
+inputSearch.addEventListener('search', onSearch);
+
 // Evento do keyup no formulário com client name (onde tem o botão "add" ao lado para ele reduzir a opacidade)
 inputClient.addEventListener('keyup', onKeyUp);
 
@@ -166,6 +177,8 @@ for (const item of clients) {
    create(item.name, (item.isActive) ? 'active' : 'archived');
  }
 
+// TODO: Retirar o edit quando o client está archived
+// TODO: Quando o client estiver archived, mudar o botão de edit para deletar
 
 
 

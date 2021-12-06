@@ -6,6 +6,10 @@
   justify-content: space-between;
   transition: 350ms;
 
+  &[data-search-hide] {
+    display: none;
+  }
+
   &__title {
     width: 100%;
     padding: 15px 20px 15px 10px;
