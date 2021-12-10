@@ -164,7 +164,38 @@
         </ul>
       </div>
       <div class="content">
+        <!-- Team -->
+        <section class="team">
+          <header class="team__header">
+            <h2 class="team__headline">Members</h2>
+          </header>
+          <table class="team__table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Billable rate</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rodrigo Castro (you)</td>
+                <td>ola@rodrigo.com</td>
+                <td class="team__rate">
+                  <input type="text" name="team_member_1" value="0">
+                  <span>€</span>
+                </td>
+                <td>
+                  <span class="team__role">Owner</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
         <!-- Clients -->
+        <!-- 
         <section class="clients">
           <header class="clients__header">
             <h2 class="clients__headline">Clients</h2>
@@ -195,7 +226,7 @@
           </header>
           <div class="clients__container" data-status="active">
             <p class="clients__label">Name</p>
-            <!-- <div class="client">
+            <div class="client">
               <input
                 type="text"
                 class="client__title"
@@ -209,9 +240,13 @@
               <button class="client__delete">
                 <span class="material-icons">delete</span>
               </button>
-            </div> -->
+              <button class="client__restore">
+                <span class="material-icons">restore</span>
+              </button>
+            </div> 
           </div>
         </section>
+        -->
       </div>
     </main>
 
