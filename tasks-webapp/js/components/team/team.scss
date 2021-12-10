@@ -55,5 +55,28 @@
     font-size: 0.75rem;
     padding: 5px 10px;
     border-radius: 2px;
+
+    &[data-role="Frontend Developer"] {
+      background: #bb2020;
+    }
+    &[data-role="Backend Developer"] {
+      background: #06111c;
+    }
+
+    &[data-role="UI Designer"] {
+      background: #bec7c7;
+    }
+
+    &[data-role="UX Designer"] {
+      background: #d98e04;
+    }
+
+    &[data-role="Tech Lead"] {
+      background: #121317;
+    }
+
+    &[data-role="QA"] {
+      background: #7e8054;
+    }
   }
 }
