@@ -1,5 +1,5 @@
-.team{
-  &__header{
+.team {
+  &__header {
     min-height: 40px;
     display: flex;
     align-items: center;
@@ -9,16 +9,21 @@
     border: 1px solid var(--color-secondary);
   }
 
-  &__headline{
+  &__headline {
     margin: 0;
     font-size: 0.75rem;
     font-weight: 400;
   }
 
-  &__table{
+  &__table {
     width: 100%;
     border: 1px solid var(--color-secondary);
     border-top: none;
+    border-collapse: collapse;
+
+    tr {
+      border-bottom: 1px solid var(--color-secondary);
+    }
 
     th,
     td {
@@ -26,7 +31,7 @@
     }
 
     th {
-      font-size: .75rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       color: var(--color-secondary);
       letter-spacing: 1px;
@@ -35,18 +40,19 @@
     }
 
     td {
-
     }
   }
 
-  &__rate{
-
+  &__rate {
+    input {
+      max-width: 60px;
+    }
   }
 
-  &__role{
+  &__role {
     background: var(--color-primary);
     color: var(--color-white);
-    font-size: .75rem;
+    font-size: 0.75rem;
     padding: 5px 10px;
     border-radius: 2px;
   }
