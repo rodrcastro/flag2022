@@ -32,6 +32,10 @@
       outline-color: var(--color-primary);
       background: var(--color-white);
     }
+
+    &.error {
+      border-color: red;
+    }
   }
 
   &__count {
