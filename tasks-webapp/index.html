@@ -167,14 +167,14 @@
 
         <!-- Contact Form -->
 
-        <form class="contact-form">
+        <form id="contact-form" action="" class="contact-form" novalidate>
           <p class="contact-form__title">Contact us</p>
           
           <label for="cf_email" class="contact-form__label">Your email</label>
           <input type="email" class="contact-form__input" name="cf_email" id="cf_email" required>
 
           <label for="cf_subject" class="contact-form__label">Subject</label>
-          <input type="email" class="contact-form__input" name="cf_subject" id="cf_subject" required>
+          <input type="text" class="contact-form__input" name="cf_subject" id="cf_subject" required>
 
           <label for="cf_message" class="contact-form__label">Your message</label>
           <textarea maxlength="280" row="6" name="cf_message" id="cf_message" class="contact-form__textarea" required></textarea>
