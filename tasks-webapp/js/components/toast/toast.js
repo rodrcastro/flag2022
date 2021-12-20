@@ -50,7 +50,4 @@ export default class Toast {
     <span class="material-icons">close</span>
   </button>
   </div>
-
-
-  
 */
