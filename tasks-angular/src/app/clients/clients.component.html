@@ -1,8 +1,8 @@
 <!-- Clients -->
 <section class="clients">
   <header class="clients__header">
-    <h2 class="clients__headline">{{title}} </h2>
-    <!--
+    <h2 class="clients__headline">{{ title }}</h2>
+
     <div class="clients__filters">
       <select name="clients_filter" id="" class="clients__select">
         <option value="active">Show active</option>
@@ -10,46 +10,56 @@
         <option value="">Show all</option>
       </select>
       <input
-      type="search"
-      class="clients__input"
-      name="clients_search"
-      placeholder="Search by name"
+        type="search"
+        class="clients__input"
+        name="clients_search"
+        placeholder="Search by name"
       />
     </div>
     <form action="#nowhere" class="clients__create">
       <input
-      type="text"
-      name="create_client"
-      class="clients__input"
-      placeholder="Add new client"
+        type="text"
+        name="create_client"
+        class="clients__input"
+        placeholder="Add new client"
       />
-      <button type="submit" class="button clients__add" disabled>
-        Add
-      </button>
+      <button type="submit" class="button clients__add" disabled>Add</button>
     </form>
-    -->
   </header>
+
   <div class="clients__container" data-status="active">
     <p class="clients__label">Name</p>
 
-    <div *ngFor="let client of clients" class="client">
-      <span class="client__title">{{client.name}}</span>
-      <!-- <input
-      type="text"
-      class="client__title"
-      value="Others"
-      name="client_1"
-      readonly
-      /> -->
-      <button class="client__edit">
+    <div
+      *ngFor="let client of clients"
+      [attr.data-status]="client.isActive ? null : 'archived'"
+      class="client"
+    >
+      <input
+        type="text"
+        class="client__title"
+        name="client_1"
+        (blur)="onBlur()"
+        [(ngModel)]="client.name"
+        [attr.readonly]="client === clientEditing ? null : 'readonly'"
+      />
+      <button class="client__edit" (click)="onEdit(client)">
         <span class="material-icons">create</span>
       </button>
-      <button class="client__delete">
+      <button
+        *ngIf="client.isActive"
+        class="client__delete"
+        (click)="onDelete(client)"
+      >
         <span class="material-icons">delete</span>
       </button>
-      <button class="client__restore">
+      <button
+        *ngIf="!client.isActive"
+        class="client__restore"
+        (click)="onRestore(client)"
+      >
         <span class="material-icons">restore</span>
       </button>
-    </div> 
+    </div>
   </div>
 </section>

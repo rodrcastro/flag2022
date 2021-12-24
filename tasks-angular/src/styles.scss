@@ -1,1 +1,121 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+:root {
+  --color-default: rgb(51, 51, 51);
+  --color-primary: rgb(3, 169, 244);
+  --color-secondary: rgb(153, 153, 153);
+  --color-highlight: rgb(255, 152, 0);
+
+  --color-white: rgb(255, 255, 255);
+
+  --color-surface: rgb(228, 234, 238);
+  --color-surface-light: rgb(242, 246, 248);
+
+  --box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  overflow-y: scroll;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-default);
+  background: var(--color-surface-light);
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  min-width: 100px;
+  border-radius: 2px;
+
+  &[disabled] {
+    opacity: 0.65;
+    cursor: default;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.content {
+  padding: 100px 20px;
+}
+
+.material-icons {
+  font-size: inherit;
+}
+
+.toast {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  &__item {
+    background: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    padding: 1em 2em 1em 1em;
+    position: relative;
+    margin-bottom: 1px;
+
+    &[data-status="success"] {
+      background: olive;
+    }
+    &[data-status="warning"] {
+      background: orange;
+    }
+    &[data-status="error"] {
+      background: maroon;
+    }
+  }
+
+  &__message {
+    margin: 0;
+  }
+
+  &__close {
+    color: inherit;
+    font-size: 1.25rem;
+    margin-left: 1em;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+
+  &__error {
+    background: red;
+  }
+}

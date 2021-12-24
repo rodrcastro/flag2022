@@ -1,4 +1,6 @@
-export const CLIENTS = [
+import { Client } from "src/interfaces/clients";
+
+export const CLIENTS: Client[] = [
   {
     id: 1,
     name: 'Others',

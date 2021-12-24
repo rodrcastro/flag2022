@@ -1,0 +1,135 @@
+.clients {
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__headline {
+    margin: 0 0 40px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  &__filters {
+  }
+
+  &__select,
+  &__input {
+    padding: 8px 10px;
+    border: 1px solid var(--color-surface);
+    font-size: 0.875rem;
+    font-family: inherit;
+    margin-right: 10px;
+  }
+
+  &__select {
+  }
+
+  &__input {
+  }
+
+  &__create {
+  }
+
+  &__add {
+  }
+
+  &__container {
+    margin-top: 20px;
+
+    &[data-status="archived"] {
+      .client[data-status="active"] {
+        //opacity: 0.25;
+        //text-decoration: line-through;
+        //display: none;
+      }
+      .client[data-status="archived"] {
+        text-decoration: line-through;
+
+        .client__restore {
+          display: block;
+        }
+      }
+    }
+    &[data-status="active"] {
+      .client[data-status="archived"] {
+        opacity: 0.25;
+        text-decoration: line-through;
+        //display: none;
+      }
+      .client[data-status="active"] {
+        .client__restore {
+          display: none;
+        }
+      }
+    }
+    &[data-status=""] {
+      .client[data-status="archived"] {
+        text-decoration: line-through;
+        .client__restore {
+          display: block;
+        }
+      }
+      .client[data-status="active"] {
+        .client__restore {
+          //display: none;
+        }
+      }
+    }
+  }
+
+  &__label {
+    margin: 0;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: var(--color-surface);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+    font-size: 0.75rem;
+  }
+}
+
+.client {
+  padding: 5px 10px 5px 10px;
+  border: 1px solid var(--color-secondary);
+  background: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  transition: 350ms;
+
+  &[data-search-hide] {
+    display: none;
+  }
+
+  &__title {
+    width: 100%;
+    padding: 15px 20px 15px 10px;
+
+    &[readonly] {
+      border-color: transparent;
+
+      &:focus-within {
+        outline-color: transparent;
+      }
+    }
+  }
+
+  &__edit,
+  &__delete,
+  &__restore {
+    padding: 15px 10px;
+    font-size: 1.25rem;
+    color: var(--color-secondary);
+    border-left: 1px dotted var(--color-secondary);
+  }
+
+  &__edit {
+  }
+
+  &__delete {
+  }
+}

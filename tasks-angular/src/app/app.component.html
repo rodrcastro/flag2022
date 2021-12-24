@@ -1,6 +1,9 @@
-<h1>{{title}}</h1>
-<h2>{{subtitle}}</h2>
+<main class="main">
+  <app-sidebar></app-sidebar>
 
-<app-clients></app-clients>
+  <div class="content">
+    <app-clients></app-clients>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </div>
+</main>
