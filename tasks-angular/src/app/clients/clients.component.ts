@@ -1,3 +1,4 @@
+import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/interfaces/clients';
 import { CLIENTS } from 'src/mocks/clients-mock';
@@ -11,6 +12,9 @@ export class ClientsComponent implements OnInit {
   title = 'Clients';
   clients = CLIENTS;
   clientEditing: Client | null = null;
+  newClientName = '';
+  query = '';
+  currentStatus = 'active';
 
   constructor() { }
 
@@ -40,6 +44,19 @@ export class ClientsComponent implements OnInit {
   onRestore(client: Client): void {
     client.isActive = true;
     this.updateStorage();
+  }
+
+  onAdd(): void {
+    
+    const newClient: Client = {
+      id: new Date().getTime(),
+      name: this.newClientName,
+      isActive: true
+    }
+
+    this.clients.push(newClient);
+    this.updateStorage();
+    this.newClientName='';
   }
 
   updateStorage() {

@@ -43,7 +43,7 @@
       .client[data-status="active"] {
         //opacity: 0.25;
         //text-decoration: line-through;
-        //display: none;
+        display: none;
       }
       .client[data-status="archived"] {
         text-decoration: line-through;
@@ -55,9 +55,9 @@
     }
     &[data-status="active"] {
       .client[data-status="archived"] {
-        opacity: 0.25;
+        //opacity: 0.25;
         text-decoration: line-through;
-        //display: none;
+        display: none;
       }
       .client[data-status="active"] {
         .client__restore {
@@ -74,7 +74,7 @@
       }
       .client[data-status="active"] {
         .client__restore {
-          //display: none;
+          display: none;
         }
       }
     }

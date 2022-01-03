@@ -4,7 +4,12 @@
     <h2 class="clients__headline">{{ title }}</h2>
 
     <div class="clients__filters">
-      <select name="clients_filter" id="" class="clients__select">
+      <select
+        name="clients_filter"
+        id=""
+        class="clients__select"
+        [(ngModel)]="currentStatus"
+      >
         <option value="active">Show active</option>
         <option value="archived">Show archived</option>
         <option value="">Show all</option>
@@ -14,25 +19,36 @@
         class="clients__input"
         name="clients_search"
         placeholder="Search by name"
+        [(ngModel)]="query"
       />
     </div>
-    <form action="#nowhere" class="clients__create">
+    <form (submit)="onAdd()" action="#nowhere" class="clients__create">
       <input
         type="text"
         name="create_client"
         class="clients__input"
         placeholder="Add new client"
+        [(ngModel)]="newClientName"
       />
-      <button type="submit" class="button clients__add" disabled>Add</button>
+      <button
+        type="submit"
+        class="button clients__add"
+        [attr.disabled]="newClientName.length < 3 ? 'disabled' : null"
+      >
+        Add
+      </button>
     </form>
   </header>
 
-  <div class="clients__container" data-status="active">
+  <div class="clients__container" [attr.data-status]="currentStatus">
     <p class="clients__label">Name</p>
 
     <div
       *ngFor="let client of clients"
-      [attr.data-status]="client.isActive ? null : 'archived'"
+      [attr.data-search-hide]="
+        client.name.toLowerCase().includes(query.toLowerCase()) ? null : ''
+      "
+      [attr.data-status]="client.isActive ? 'active' : 'archived'"
       class="client"
     >
       <input
