@@ -33,7 +33,7 @@
       background: var(--color-white);
     }
 
-    &.error {
+    &.ng-invalid:not(form) {
       border-color: red;
     }
   }

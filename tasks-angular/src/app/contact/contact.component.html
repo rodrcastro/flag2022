@@ -1,4 +1,10 @@
-<form id="contact-form" action="" class="contact-form" (submit)="onSubmit()">
+<form
+  id="contact-form"
+  action=""
+  class="contact-form"
+  (submit)="onSubmit(contactForm)"
+  #contactForm="ngForm"
+>
   <p class="contact-form__title">Contact us</p>
 
   <label for="cf_email" class="contact-form__label">Your email</label>
@@ -8,7 +14,9 @@
     name="cf_email"
     id="cf_email"
     [(ngModel)]="emailField"
+    #email="ngModel"
     required
+    email
   />
 
   <label for="cf_subject" class="contact-form__label">Subject</label>
@@ -17,7 +25,10 @@
     class="contact-form__input"
     name="cf_subject"
     id="cf_subject"
+    [(ngModel)]="subjectField"
+    #subject="ngModel"
     required
+    minlength="3"
   />
 
   <label for="cf_message" class="contact-form__label">Your message</label>
@@ -27,14 +38,23 @@
     name="cf_message"
     id="cf_message"
     class="contact-form__textarea"
+    [(ngModel)]="messageField"
+    #message="ngModel"
     required
+    minlength="3"
   ></textarea>
-  <span class="contact-form__count"><strong>280</strong> characters left</span>
+  <span class="contact-form__count"
+    ><strong>{{ 280 - messageField.length }}</strong> characters left</span
+  >
 
   <label for="cf_file" class="contact-form__label">Upload a file</label>
   <input type="file" name="cf_files[]" id="cf_file" multiple />
 
-  <button class="button contact-form__submit" type="submit">
+  <button
+    class="button contact-form__submit"
+    type="submit"
+    [disabled]="!contactForm.form.valid"
+  >
     Send message
   </button>
 </form>
