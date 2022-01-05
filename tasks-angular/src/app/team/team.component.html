@@ -11,16 +11,25 @@
         <th>Role</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let member of members">
       <tr>
-        <td>Rodrigo Castro (you)</td>
-        <td>ola@rodrigo.com</td>
+        <td>{{ member.name }}</td>
+        <td>{{ member.email }}</td>
         <td class="team__rate">
-          <input type="text" name="team_member_1" value="0" />
+          <input
+            type="number"
+            name="team_member_1"
+            value="{{ member.rate }}"
+            [attr.data-id]="member.id"
+            [(ngModel)]="member.rate"
+            (blur)="onInputBlur(member)"
+          />
           <span>€</span>
         </td>
         <td>
-          <span class="team__role">Owner</span>
+          <span class="team__role" [attr.data-role]="member.role">{{
+            member.role
+          }}</span>
         </td>
       </tr>
     </tbody>
