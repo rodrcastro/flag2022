@@ -8,6 +8,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ContactComponent } from './contact/contact.component';
 import { TeamComponent } from './team/team.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TeamComponent } from './team/team.component';
     ClientsComponent,
     SidebarComponent,
     ContactComponent,
-    TeamComponent
+    TeamComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
