@@ -2,6 +2,7 @@ import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/interfaces/clients';
 import { CLIENTS } from 'src/mocks/clients-mock';
+import { ToastService } from '../toast.service';
 
 @Component({
   selector: 'app-clients',
@@ -16,7 +17,7 @@ export class ClientsComponent implements OnInit {
   query = '';
   currentStatus = 'active';
 
-  constructor() { }
+  constructor(private toastService: ToastService) { }
 
   ngOnInit(): void {
     const data = localStorage.getItem('clients');
@@ -38,11 +39,16 @@ export class ClientsComponent implements OnInit {
 
   onDelete(client: Client): void {
     client.isActive = false;
+
+    this.toastService.add(`Cliente ${client.name} arquivado`, 'warning');
     
     this.updateStorage();
   }
   onRestore(client: Client): void {
     client.isActive = true;
+
+    this.toastService.add(`Cliente ${client.name} restaurado`, 'success');
+
     this.updateStorage();
   }
 
@@ -55,8 +61,12 @@ export class ClientsComponent implements OnInit {
     }
 
     this.clients.push(newClient);
+
+    this.toastService.add(`Cliente ${this.newClientName} criado com sucesso`, 'success');
+
     this.updateStorage();
     this.newClientName='';
+    
   }
 
   updateStorage() {
