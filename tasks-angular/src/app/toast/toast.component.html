@@ -1,0 +1,10 @@
+<div
+  *ngFor="let toast of toastService.toasts"
+  class="toast__item"
+  [attr.data-status]="toast.type"
+>
+  <p class="toast__message">{{ toast.message }}</p>
+  <button class="toast__close" (click)="close(toast)">
+    <span class="material-icons">close</span>
+  </button>
+</div>

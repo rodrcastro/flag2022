@@ -1,0 +1,50 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.toast {
+  &__item {
+    background: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    padding: 1em 2em 1em 1em;
+    position: relative;
+    margin-bottom: 1px;
+
+    &[data-status="success"] {
+      background: olive;
+    }
+    &[data-status="warning"] {
+      background: orange;
+    }
+    &[data-status="error"] {
+      background: maroon;
+    }
+  }
+
+  &__message {
+    margin: 0;
+  }
+
+  &__close {
+    color: inherit;
+    font-size: 1.25rem;
+    margin-left: 1em;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+
+  &__error {
+    background: red;
+  }
+}
