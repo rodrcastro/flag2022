@@ -34,6 +34,7 @@
   <label for="cf_message" class="contact-form__label">Your message</label>
   <textarea
     maxlength="280"
+    minlength="3"
     row="6"
     name="cf_message"
     id="cf_message"
@@ -41,11 +42,11 @@
     [(ngModel)]="messageField"
     #message="ngModel"
     required
-    minlength="3"
   ></textarea>
-  <span class="contact-form__count"
-    ><strong>{{ 280 - messageField.length }}</strong> characters left</span
-  >
+  <span class="contact-form__count">
+    <!-- <strong>{{ 280 - messageField.length }}</strong> characters left - isto dá erro no form submit, ele diz que o campo mensagem é null, por isso não pode ler o "length" dele-->
+    <strong>280</strong> characters left
+  </span>
 
   <label for="cf_file" class="contact-form__label">Upload a file</label>
   <input type="file" name="cf_files[]" id="cf_file" multiple />

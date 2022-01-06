@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
+import { ToastService } from '../toast.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +13,7 @@ export class ContactComponent implements OnInit {
   subjectField = '';
   messageField = '';
   
-  constructor() { }
+  constructor(private toastService: ToastService) { }
 
   ngOnInit(): void {
 
@@ -22,6 +23,7 @@ export class ContactComponent implements OnInit {
       .then(response => response.json())
       .then(data => {
         if (data.result === 'OK') {
+          this.toastService.add('Email enviado com sucesso', 'success');
           contactForm.reset();
         }
       })
