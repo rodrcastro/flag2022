@@ -1,4 +1,30 @@
 <section class="team">
+  <form action="#nowhere" class="team__create" (submit)="onAdd()">
+    <input
+      type="text"
+      name="create_member_name"
+      class="clients__input"
+      placeholder="New member name"
+      [(ngModel)]="newMemberName"
+    />
+    <input
+      type="email"
+      name="create_member_email"
+      class="clients__input"
+      placeholder="New member email"
+      [(ngModel)]="newMemberEmail"
+    />
+    <select name="roles" id="" [(ngModel)]="newMemberRole">
+      <option value="Project Manager">Project Manager</option>
+      <option value="Frontend Developer">Frontend Developer</option>
+      <option value="Backend Developer">Backend Developer</option>
+      <option value="UI Designer">UI Designer</option>
+      <option value="UX Designer">UX Designer</option>
+      <option value="Tech Lead">Tech Lead</option>
+      <option value="QA">QA</option>
+    </select>
+    <button type="submit" class="button clients__add">Add</button>
+  </form>
   <header class="team__header">
     <h2 class="team__headline">Members</h2>
   </header>
