@@ -1,11 +1,17 @@
 <section class="team">
-  <form action="#nowhere" class="team__create" (submit)="onAdd()">
+  <form
+    action="#nowhere"
+    class="team__create"
+    (submit)="onAdd()"
+    #createMember="ngForm"
+  >
     <input
       type="text"
       name="create_member_name"
       class="clients__input"
       placeholder="New member name"
       [(ngModel)]="newMemberName"
+      minlength="3"
     />
     <input
       type="email"
@@ -13,8 +19,9 @@
       class="clients__input"
       placeholder="New member email"
       [(ngModel)]="newMemberEmail"
+      email
     />
-    <select name="roles" id="" [(ngModel)]="newMemberRole">
+    <select name="roles" id="" [(ngModel)]="newMemberRole" required>
       <option value="Project Manager">Project Manager</option>
       <option value="Frontend Developer">Frontend Developer</option>
       <option value="Backend Developer">Backend Developer</option>
@@ -23,7 +30,13 @@
       <option value="Tech Lead">Tech Lead</option>
       <option value="QA">QA</option>
     </select>
-    <button type="submit" class="button clients__add">Add</button>
+    <button
+      type="submit"
+      class="button clients__add"
+      [disabled]="!createMember.form.valid"
+    >
+      Add
+    </button>
   </form>
   <header class="team__header">
     <h2 class="team__headline">Members</h2>
@@ -37,18 +50,17 @@
         <th>Role</th>
       </tr>
     </thead>
-    <tbody *ngFor="let member of members">
-      <tr>
+    <tbody>
+      <tr *ngFor="let member of members">
         <td>{{ member.name }}</td>
         <td>{{ member.email }}</td>
         <td class="team__rate">
           <input
             type="number"
             name="team_member_1"
-            value="{{ member.rate }}"
             [attr.data-id]="member.id"
             [(ngModel)]="member.rate"
-            (blur)="onInputBlur(member)"
+            (change)="onInputChange(member)"
           />
           <span>€</span>
         </td>

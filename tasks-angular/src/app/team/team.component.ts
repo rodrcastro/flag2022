@@ -43,8 +43,7 @@ export class TeamComponent implements OnInit {
         });
   }
 
-  onInputBlur(member: Member): void {
-    this.rate = member.rate;
+  onInputChange(member: Member): void {
     localStorage.setItem('members', JSON.stringify(this.members));
   }
 
@@ -53,11 +52,11 @@ export class TeamComponent implements OnInit {
 
     this.toastService.add(`Usuário ${this.newMemberName} criado com sucesso`, 'success');
 
+    localStorage.setItem('members', JSON.stringify(this.members));
+
     this.newMemberName = '';
     this.newMemberEmail = '';
     this.newMemberRole = '';
-
-    localStorage.setItem('members', JSON.stringify(this.members));
   }
 
 }
