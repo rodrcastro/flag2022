@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SIDEBAR1, SIDEBARANALYZE, SIDEBARMANAGE } from 'src/mocks/sidebar-items';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  sidebar1 = SIDEBAR1;
+  sidebarAnalyze = SIDEBARANALYZE;
+  sidebarManage = SIDEBARMANAGE;
+  
   constructor() { }
 
   ngOnInit(): void {
