@@ -44,7 +44,9 @@ export class TeamComponent implements OnInit {
   }
 
   onInputChange(member: Member): void {
-    localStorage.setItem('members', JSON.stringify(this.members));
+    this.onUpdate();
+
+    setTimeout(() => this.toastService.add(`Rate de ${member.name} atualizado para ${member.rate}€`, 'success'), 500); 
   }
 
   onAdd(): void {
@@ -52,11 +54,15 @@ export class TeamComponent implements OnInit {
 
     this.toastService.add(`Usuário ${this.newMemberName} criado com sucesso`, 'success');
 
-    localStorage.setItem('members', JSON.stringify(this.members));
+    this.onUpdate();
 
     this.newMemberName = '';
     this.newMemberEmail = '';
     this.newMemberRole = '';
+  }
+
+  onUpdate(): void {
+    localStorage.setItem('members', JSON.stringify(this.members));
   }
 
 }
