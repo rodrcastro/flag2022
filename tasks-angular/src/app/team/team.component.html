@@ -65,9 +65,12 @@
           <span>€</span>
         </td>
         <td>
-          <span class="team__role" [attr.data-role]="member.role">{{
-            member.role
-          }}</span>
+          <a
+            [routerLink]="['/roles', slugify(member.role)]"
+            class="team__role"
+            [attr.data-role]="member.role"
+            >{{ member.role }}</a
+          >
         </td>
       </tr>
     </tbody>
