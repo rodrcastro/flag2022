@@ -1,0 +1,25 @@
+<div
+  [attr.data-search-hide]="
+    info.name.toLowerCase().includes(search.toLowerCase()) ? null : ''
+  "
+  [attr.data-status]="info.isActive ? 'active' : 'archived'"
+  class="client"
+>
+  <input
+    type="text"
+    class="client__title"
+    name="client_1"
+    (blur)="onBlur()"
+    [(ngModel)]="info.name"
+    [attr.readonly]="isEditing ? null : 'readonly'"
+  />
+  <button class="client__edit" (click)="onEdit()">
+    <span class="material-icons">create</span>
+  </button>
+  <button *ngIf="info.isActive" class="client__delete" (click)="onDelete()">
+    <span class="material-icons">delete</span>
+  </button>
+  <button *ngIf="!info.isActive" class="client__restore" (click)="onRestore()">
+    <span class="material-icons">restore</span>
+  </button>
+</div>

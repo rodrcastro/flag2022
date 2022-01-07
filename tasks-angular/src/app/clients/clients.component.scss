@@ -40,41 +40,47 @@
     margin-top: 20px;
 
     &[data-status="archived"] {
-      .client[data-status="active"] {
-        //opacity: 0.25;
-        //text-decoration: line-through;
-        display: none;
-      }
-      .client[data-status="archived"] {
-        text-decoration: line-through;
+      ::ng-deep {
+        .client[data-status="active"] {
+          //opacity: 0.25;
+          //text-decoration: line-through;
+          display: none;
+        }
+        .client[data-status="archived"] {
+          text-decoration: line-through;
 
-        .client__restore {
-          display: block;
+          .client__restore {
+            display: block;
+          }
         }
       }
     }
     &[data-status="active"] {
-      .client[data-status="archived"] {
-        //opacity: 0.25;
-        text-decoration: line-through;
-        display: none;
-      }
-      .client[data-status="active"] {
-        .client__restore {
+      ::ng-deep {
+        .client[data-status="archived"] {
+          //opacity: 0.25;
+          text-decoration: line-through;
           display: none;
+        }
+        .client[data-status="active"] {
+          .client__restore {
+            display: none;
+          }
         }
       }
     }
     &[data-status=""] {
-      .client[data-status="archived"] {
-        text-decoration: line-through;
-        .client__restore {
-          display: block;
+      ::ng-deep {
+        .client[data-status="archived"] {
+          text-decoration: line-through;
+          .client__restore {
+            display: block;
+          }
         }
-      }
-      .client[data-status="active"] {
-        .client__restore {
-          display: none;
+        .client[data-status="active"] {
+          .client__restore {
+            display: none;
+          }
         }
       }
     }
@@ -90,46 +96,5 @@
     color: var(--color-secondary);
     border: 1px solid var(--color-secondary);
     font-size: 0.75rem;
-  }
-}
-
-.client {
-  padding: 5px 10px 5px 10px;
-  border: 1px solid var(--color-secondary);
-  background: var(--color-white);
-  display: flex;
-  justify-content: space-between;
-  transition: 350ms;
-
-  &[data-search-hide] {
-    display: none;
-  }
-
-  &__title {
-    width: 100%;
-    padding: 15px 20px 15px 10px;
-
-    &[readonly] {
-      border-color: transparent;
-
-      &:focus-within {
-        outline-color: transparent;
-      }
-    }
-  }
-
-  &__edit,
-  &__delete,
-  &__restore {
-    padding: 15px 10px;
-    font-size: 1.25rem;
-    color: var(--color-secondary);
-    border-left: 1px dotted var(--color-secondary);
-  }
-
-  &__edit {
-  }
-
-  &__delete {
   }
 }

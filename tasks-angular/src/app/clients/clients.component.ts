@@ -12,7 +12,7 @@ import { ToastService } from '../toast.service';
 export class ClientsComponent implements OnInit {
   title = 'Clients';
   clients = CLIENTS;
-  clientEditing: Client | null = null;
+  //clientEditing: Client | null = null;
   newClientName = '';
   query = '';
   currentStatus = 'active';
@@ -24,32 +24,6 @@ export class ClientsComponent implements OnInit {
     if(data) {
       this.clients = JSON.parse(data);
     }
-  }
-  
-  onEdit(client: Client): void {
-    this.clientEditing = client;
-    
-  }
-
-  onBlur(): void {
-    this.clientEditing = null;
-
-    this.updateStorage();
-  }
-
-  onDelete(client: Client): void {
-    client.isActive = false;
-
-    this.toastService.add(`Cliente ${client.name} arquivado`, 'warning');
-    
-    this.updateStorage();
-  }
-  onRestore(client: Client): void {
-    client.isActive = true;
-
-    this.toastService.add(`Cliente ${client.name} restaurado`, 'success');
-
-    this.updateStorage();
   }
 
   onAdd(): void {

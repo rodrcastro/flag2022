@@ -39,43 +39,13 @@
       </button>
     </form>
   </header>
-
   <div class="clients__container" [attr.data-status]="currentStatus">
     <p class="clients__label">Name</p>
 
-    <div
+    <app-client
       *ngFor="let client of clients"
-      [attr.data-search-hide]="
-        client.name.toLowerCase().includes(query.toLowerCase()) ? null : ''
-      "
-      [attr.data-status]="client.isActive ? 'active' : 'archived'"
-      class="client"
-    >
-      <input
-        type="text"
-        class="client__title"
-        name="client_1"
-        (blur)="onBlur()"
-        [(ngModel)]="client.name"
-        [attr.readonly]="client === clientEditing ? null : 'readonly'"
-      />
-      <button class="client__edit" (click)="onEdit(client)">
-        <span class="material-icons">create</span>
-      </button>
-      <button
-        *ngIf="client.isActive"
-        class="client__delete"
-        (click)="onDelete(client)"
-      >
-        <span class="material-icons">delete</span>
-      </button>
-      <button
-        *ngIf="!client.isActive"
-        class="client__restore"
-        (click)="onRestore(client)"
-      >
-        <span class="material-icons">restore</span>
-      </button>
-    </div>
+      [info]="client"
+      [search]="query"
+    ></app-client>
   </div>
 </section>
