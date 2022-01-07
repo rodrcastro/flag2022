@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Client } from 'src/interfaces/clients';
 
 @Component({
@@ -10,6 +10,8 @@ export class ClientComponent implements OnInit {
 
   @Input() info!: Client;
   @Input() search!: string;
+  @Output() updateClientEvent = new EventEmitter<Client>();
+
   isEditing = false;
 
   constructor() { }
@@ -19,27 +21,24 @@ export class ClientComponent implements OnInit {
 
   onEdit(): void {
     this.isEditing = true;
-    
   }
 
   onBlur(): void {
     this.isEditing = false;
+  }
 
-    //this.updateStorage();
+  onChange(): void {
+    this.updateClientEvent.emit(this.info);
   }
 
   onDelete(): void {
     this.info.isActive = false;
 
-    //this.toastService.add(`Cliente ${client.name} arquivado`, 'warning');
-    
-    //this.updateStorage();
+    this.updateClientEvent.emit(this.info);
   }
+
   onRestore(): void {
     this.info.isActive = true;
-
-    //this.toastService.add(`Cliente ${client.name} restaurado`, 'success');
-
-    //this.updateStorage();
+    this.updateClientEvent.emit(this.info);
   }
 }

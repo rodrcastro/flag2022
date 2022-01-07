@@ -46,6 +46,7 @@
       *ngFor="let client of clients"
       [info]="client"
       [search]="query"
+      (updateClientEvent)="onUpdate($event)"
     ></app-client>
   </div>
 </section>

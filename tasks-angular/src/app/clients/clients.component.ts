@@ -1,4 +1,3 @@
-import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/interfaces/clients';
 import { CLIENTS } from 'src/mocks/clients-mock';
@@ -41,6 +40,12 @@ export class ClientsComponent implements OnInit {
     this.updateStorage();
     this.newClientName='';
     
+  }
+
+  onUpdate(info: Client): void {
+    const index = this.clients.findIndex(item => item.id === info.id);
+    this.clients.splice(index, 1, info);
+    this.updateStorage();
   }
 
   updateStorage() {

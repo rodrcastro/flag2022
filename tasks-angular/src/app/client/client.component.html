@@ -10,6 +10,7 @@
     class="client__title"
     name="client_1"
     (blur)="onBlur()"
+    (change)="onChange()"
     [(ngModel)]="info.name"
     [attr.readonly]="isEditing ? null : 'readonly'"
   />
