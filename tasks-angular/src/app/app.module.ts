@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { TeamComponent } from './team/team.component';
 import { ToastComponent } from './toast/toast.component';
 import { ClientComponent } from './client/client.component';
+import { RoleDetailComponent } from './role-detail/role-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ClientComponent } from './client/client.component';
     ContactComponent,
     TeamComponent,
     ToastComponent,
-    ClientComponent
+    ClientComponent,
+    RoleDetailComponent
   ],
   imports: [
     BrowserModule,
