@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+
+function Toast(props) {
+  return <p>Eu sou o {props.message}</p>;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Toast message="Toast 1"/>
+      <Toast message="Toast 2"/>
+      <Toast message="Toast 3"/>
+      <Toast message="Toast 4"/>
+      <Toast message="Toast 5"/>
+      <p>Hello World</p>
     </div>
   );
 }
