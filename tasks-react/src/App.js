@@ -1,9 +1,7 @@
 //import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Toast from './components/Toast/Toast'
 
-function Toast(props) {
-  return <p>Eu sou o {props.message}</p>;
-}
 
 function App() {
   return (
