@@ -2,11 +2,11 @@ import './team.scss'
 
 function Team() {
   return (
-    <section class="team">
-        <header class="team__header">
-          <h2 class="team__headline">Members</h2>
+    <section className="team">
+        <header className="team__header">
+          <h2 className="team__headline">Members</h2>
         </header>
-        <table class="team__table">
+        <table className="team__table">
           <thead>
             <tr>
               <th>Name</th>
@@ -19,12 +19,12 @@ function Team() {
               <tr>
               <td>Rodrigo Castro (you)</td>
               <td>ola@rodrigo.com</td>
-              <td class="team__rate">
+              <td className="team__rate">
                 <input type="text" name="team_member_1" value="0" />
                 <span>€</span>
               </td>
               <td>
-                <span class="team__role">Owner</span>
+                <span className="team__role">Owner</span>
               </td>
             </tr>
           </tbody>

@@ -1,29 +1,28 @@
-import './client.scss'
+import './client.scss';
 
-function Client() {
+function Client({data}) {
+  // Posso tb fazer o destructuring const {name, id} = data
+
   return (
-    <div class="clients__container" data-status="active">
-      <p class="clients__label">Name</p>
-      <div class="client">
-        <input
+        <div className="client" data-status="active">
+          <input
           type="text"
-          class="client__title"
-          value="Others"
-          name="client_1"
+          className="client__title"
+          value={data.name}
+          name={`client_${data.id}`}
           readOnly
         />
-        <button class="client__edit">
-          <span class="material-icons">create</span>
+        <button className="client__edit">
+          <span className="material-icons">create</span>
         </button>
-        <button class="client__delete">
-          <span class="material-icons">delete</span>
+        <button className="client__delete">
+          <span className="material-icons">delete</span>
         </button>
-        <button class="client__restore">
-          <span class="material-icons">restore</span>
+        <button className="client__restore">
+          <span className="material-icons">restore</span>
         </button>
-      </div> 
-    </div>
+      </div>
   )
-}
+};
 
-export default Client
+export default Client;
