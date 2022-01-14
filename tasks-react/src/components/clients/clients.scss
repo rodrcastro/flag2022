@@ -40,47 +40,41 @@
     margin-top: 20px;
 
     &[data-status="archived"] {
-      ::ng-deep {
-        .client[data-status="active"] {
-          //opacity: 0.25;
-          //text-decoration: line-through;
-          display: none;
-        }
-        .client[data-status="archived"] {
-          text-decoration: line-through;
+      .client[data-status="active"] {
+        //opacity: 0.25;
+        //text-decoration: line-through;
+        display: none;
+      }
+      .client[data-status="archived"] {
+        text-decoration: line-through;
 
-          .client__restore {
-            display: block;
-          }
+        .client__restore {
+          display: block;
         }
       }
     }
     &[data-status="active"] {
-      ::ng-deep {
-        .client[data-status="archived"] {
-          //opacity: 0.25;
-          text-decoration: line-through;
+      .client[data-status="archived"] {
+        //opacity: 0.25;
+        //text-decoration: line-through;
+        display: none;
+      }
+      .client[data-status="active"] {
+        .client__restore {
           display: none;
-        }
-        .client[data-status="active"] {
-          .client__restore {
-            display: none;
-          }
         }
       }
     }
     &[data-status=""] {
-      ::ng-deep {
-        .client[data-status="archived"] {
-          text-decoration: line-through;
-          .client__restore {
-            display: block;
-          }
+      .client[data-status="archived"] {
+        text-decoration: line-through;
+        .client__restore {
+          display: block;
         }
-        .client[data-status="active"] {
-          .client__restore {
-            display: none;
-          }
+      }
+      .client[data-status="active"] {
+        .client__restore {
+          display: none;
         }
       }
     }
