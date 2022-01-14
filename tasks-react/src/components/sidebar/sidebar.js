@@ -76,9 +76,9 @@ function Sidebar() {
     <div className="sidebar">
 
       <ul className="sidebar__list">
-          {mainOptions.map(option => (
-            <ListItem key={option.text} data={option} />
-          ))}
+        {mainOptions.map(option => (
+          <ListItem key={option.text} data={option} />
+        ))}
       </ul>
 
       <p className="sidebar__title">Analyze</p>
