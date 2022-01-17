@@ -53,4 +53,10 @@
     align-self: flex-start;
     border-radius: 4px;
   }
+
+  &__success {
+    background-color: olivedrab;
+    color: var(--color-white);
+    padding: 1rem 2rem;
+  }
 }
