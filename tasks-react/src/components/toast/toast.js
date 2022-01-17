@@ -3,6 +3,7 @@ import './toast.scss';
 
 function Toast() {
   const [count, setCount] = useState(5);
+  const [isActive, setIsActive] = useState(true);
   const [data, setData] = useState([
     {
       id: 1,
@@ -24,7 +25,7 @@ function Toast() {
       message: 'Toast success',
       type: 'success'
     },
-  ])
+  ]);
   // const updatedData = [...data, newData]
 
   const onClose = (event) => {
@@ -40,6 +41,7 @@ function Toast() {
     }]);
 
     setCount(count + 1);
+    setIsActive(!isActive);
   }
 
   return (
