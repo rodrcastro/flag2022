@@ -54,7 +54,22 @@
     border-radius: 4px;
   }
 
-  &__success {
+  &[data-status="success"] {
+    .contact-form__feedback {
+      display: block;
+    }
+  }
+
+  &[data-status="error"] {
+    .contact-form__feedback {
+      display: block;
+      background-color: maroon;
+      color: var(--color-white);
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__feedback {
     background-color: olivedrab;
     color: var(--color-white);
     padding: 1rem 2rem;
