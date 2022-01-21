@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { ToastContext } from '../../contexts/toast-context';
+
 import './sidebar.scss';
 
 function ListItem(props) {
@@ -12,6 +15,8 @@ function ListItem(props) {
 }
 
 function Sidebar() {
+
+  const {toasts} = useContext(ToastContext);
 
   const mainOptions = [
       {
@@ -74,7 +79,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-
+      <p>Existem {toasts.length} notificações</p>
       <ul className="sidebar__list">
         {mainOptions.map(option => (
           <ListItem key={option.text} data={option} />
