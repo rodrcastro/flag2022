@@ -1,6 +1,7 @@
 import './contact.scss';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {isEmailValid as isEmail, isNotEmpty} from '../../helpers/form-validations';
+import { ToastContext } from '../../contexts/toast-context';
 
 function Contact() {
   const max = 280;
@@ -10,6 +11,23 @@ function Contact() {
   const [isSubjectValid, setIsSubjectValid] = useState('');
   const [isMessageValid, setIsMessageValid] = useState('');
   const [status, setStatus] = useState('');
+
+  const {toasts, setToasts} = useContext(ToastContext);
+
+  // Missing dependencies (removed to avoid loop)
+  useEffect(() => {
+    console.log('feedback message was updated');
+    if(feedbackMessage) {
+      const data = [...toasts];
+      data.push({
+      id: new Date().getTime(),
+      message: feedbackMessage,
+      type: (feedbackMessage === 'Informação submetida com sucesso') ? 'success' : 'error'
+    });
+
+    setToasts(data);
+    }
+  }, [feedbackMessage]);
 
   const handleKeyUp = (event) => {
     setCharactersLeft(max - event.target.value.length)
@@ -33,7 +51,6 @@ function Contact() {
     setIsMessageValid(checkMessage);
 
     if(checkEmail || checkSubject || checkMessage) {
-      console.log('errors');
       setFeedbackMessage('❌ Preencha o formulário corretamente')
       setStatus('error')
     } else {

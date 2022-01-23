@@ -1,11 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ToastContext } from '../../contexts/toast-context';
 import './toast.scss';
 
 function Toast() {
-  const [count, setCount] = useState(5);
   const [isActive, setIsActive] = useState(true);
-  const {toasts, setToasts} = useContext(ToastContext)
+  const {toasts, setToasts} = useContext(ToastContext);
+  
+  useEffect(() => {
+    console.log('Toast is rendered');
+
+  });
 
   // const updatedData = [...data, newData]
 
@@ -13,21 +17,20 @@ function Toast() {
     console.log(event, 'click na toast');
   }
 
-/*   const addToast = () => {
-    setData([...data,
+  const addToast = () => {
+    setToasts([...toasts,
     {
-      id: count,
-      message: `Nova Toast com id ${count}`,
+      id: new Date().getTime(),
+      message: `Nova Toast`,
       type: 'success'
     }]);
 
-    setCount(count + 1);
     setIsActive(!isActive);
-  } */
+  }
 
   return (
     <div className='toast'>
-      {/* <button onClick={addToast}>Add toast {count}</button> */}
+      <button onClick={addToast}>Add toast</button>
         {toasts.map(element => (
           <div key={element.id} className="toast__item" data-status={element.type}>
             <p className="toast__message">{element.message}</p>
