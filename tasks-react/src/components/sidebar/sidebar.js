@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { ToastContext } from '../../contexts/toast-context';
+import { WeatherContext } from '../../contexts/weather-context';
 
 import './sidebar.scss';
 
@@ -17,6 +18,7 @@ function ListItem(props) {
 function Sidebar() {
 
   const {toasts} = useContext(ToastContext);
+  const {weather} = useContext(WeatherContext);
 
   const mainOptions = [
       {
@@ -74,12 +76,18 @@ function Sidebar() {
       text: 'Contact Us',
       url: 'contact-us',
       icon: 'contact_support'
+    },
+    {
+      text: 'Weather',
+      url: 'weather',
+      icon: 'light_mode'
     }
-  ]
+  ];
 
   return (
     <div className="sidebar">
       <p>Existem {toasts.length} notificações</p>
+      <p>Temperatura atual: {weather.temperature}</p>
       <ul className="sidebar__list">
         {mainOptions.map(option => (
           <ListItem key={option.text} data={option} />
