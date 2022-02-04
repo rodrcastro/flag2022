@@ -8,7 +8,7 @@ import About from '../components/About/about';
 
 import { getSortedPostsData } from '../lib/posts';
 
-import styles from './Home.module.css';
+import styles from './Home.module.scss';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();

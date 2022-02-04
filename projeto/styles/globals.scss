@@ -1,3 +1,11 @@
+$primary-color: #0a192f;
+$white-color: #e6f1ff;
+
+:root {
+  background-color: $primary-color;
+  color: $white-color;
+}
+
 html,
 body {
   padding: 0;
