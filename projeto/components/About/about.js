@@ -1,18 +1,16 @@
 import Image from 'next/image';
+import vercel from '/public/images/vercel.png';
 
 function About() {
   return (
     <div className='hero min-h-screen bg-base-200 mb-2'>
       <div className='hero-content flex-col'>
-        <Image
-          src={'/images/vercel.png'}
-          width={100}
-          height={100}
-          alt='hello world'
-        />
+        {/* <Image src={vercel} placeholder='blur' alt='hello world' /> */}
         <div>
-          <h1 className='text-5xl font-bold text-center'>About me</h1>
-          <p className='py-6'>
+          <h1 className='text-5xl font-bold text-center text-primary'>
+            About me
+          </h1>
+          <p className='py-6 text-secondary'>
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
