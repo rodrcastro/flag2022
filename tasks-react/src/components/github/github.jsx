@@ -1,32 +1,25 @@
-import { Octokit } from '@octokit/core';
 import { useState, useEffect } from 'react';
 
 function Github() {
-
-  const [repos, setRepos] = useState({});
-  
+  const [repos, setRepos] = useState([]);
+ 
   useEffect(() => {
-    async function getGithubAPI() {
-      const octokit = new Octokit({auth: `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`})
-      const response = await octokit.request('GET /users/{username}/repos', {
-        username: 'rodrcastro'
-      });
-
-      //console.log(response.data[0].name);
-
-      //const result = await response.json();
-
-      setRepos(response);
-    }
+    fetch('https://api.github.com/users/rodrcastro/repos')
+    .then(response => response.json())
+    .then(data => {setRepos(data)})
     
-    getGithubAPI();
-
   }, []);
 
-  console.log(repos.data[0].name);
   return (
     <>
-    <h1>Hello </h1>
+      <ul>
+        {repos.map((data) => (
+          <li>
+            <h2>{data.name}</h2>
+            <h3>{data.description}</h3>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
