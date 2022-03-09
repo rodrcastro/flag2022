@@ -15,7 +15,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Nav />
-      <main>
+      <main className='bg-primary'>
         <About />
         <Projects />
         <Contact />

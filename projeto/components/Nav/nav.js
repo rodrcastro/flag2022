@@ -3,21 +3,24 @@ import Link from 'next/link';
 function Nav() {
   return (
     <>
-      <nav className='navbar mb-2 shadow-lg bg-neutral'>
-        <div className='flex-none px-2 mx-2'>
-          <span className='text-lg font-bold text-primary'>daisyUI</span>
-        </div>
+      <nav className='navbar shadow-lg bg-primary'>
         <div className='flex-1 px-2 mx-2'>
           <div className='items-stretch hidden lg:flex text-secondary'>
-            <a className='btn btn-ghost btn-sm rounded-btn'>Home</a>
-            <a className='btn btn-ghost btn-sm rounded-btn'>About (section)</a>
-            <a className='btn btn-ghost btn-sm rounded-btn'>Projects (page)</a>
-            <a className='btn btn-ghost btn-sm rounded-btn'>
+            <a className='btn btn-ghost btn-sm rounded-btn text-base-100'>
+              Home
+            </a>
+            <a className='btn btn-ghost btn-sm rounded-btn text-base-100'>
+              About (section)
+            </a>
+            <a className='btn btn-ghost btn-sm rounded-btn text-base-100'>
+              Projects (page)
+            </a>
+            <a className='btn btn-ghost btn-sm rounded-btn text-base-100'>
               Contact (section)
             </a>
           </div>
         </div>
-        <div className='flex-none'>
+        {/* Search button <div className='flex-none'>
           <button className='btn btn-square btn-ghost'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -33,7 +36,7 @@ function Nav() {
               ></path>
             </svg>
           </button>
-        </div>
+        </div> */}
       </nav>
     </>
 
